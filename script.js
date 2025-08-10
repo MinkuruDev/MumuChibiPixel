@@ -68,7 +68,7 @@ window.addEventListener('load', () => {
     // Step 2: Now redraw zoomed
     redraw();
   };
-  img.src = './mumu-chibi-wplace.png'; // your default image file
+  img.src = './images/mumu-chibi-wplace.png'; // your default image file
 });
 
 // // Load image
