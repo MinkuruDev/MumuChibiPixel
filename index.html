@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Pixel Color Picker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Image Pixel Color Picker</h1>
+
+<!-- <input type="file" id="imageLoader" accept="image/*"><br> -->
+
+<div id="canvasContainer">
+  <canvas id="imageCanvas" tabindex="0"></canvas>
+</div>
+
+<div class="controls">
+  <button id="zoomIn">Zoom In</button>
+  <button id="zoomOut">Zoom Out</button>
+</div>
+
+<div id="colorInfo">
+  <strong>Coordinates:</strong> <span id="coords">N/A</span><br>
+  <strong>Wplace Coordinates:</strong> <span id="wplaceCoords">N/A</span><br>
+  <strong>Color:</strong> <span id="colorValue">N/A</span>
+  <span id="colorName"></span>
+  <div id="colorBox"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
