@@ -2,29 +2,37 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Image Pixel Color Picker</title>
+<title>Mumu Wplace Helper</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1>Image Pixel Color Picker</h1>
+<h1>Mumu Wplace Helper</h1>
 
 <!-- <input type="file" id="imageLoader" accept="image/*"><br> -->
 
-<div id="canvasContainer">
-  <canvas id="imageCanvas" tabindex="0"></canvas>
+<div id="mainContainer">
+  <div id="canvasContainer">
+    <canvas id="imageCanvas" tabindex="0"></canvas>
+  </div>
+
+  <div id="chunkViewerContainer">
+    <h3>Chunk Viewer</h3>
+    <canvas id="chunkCanvas"></canvas>
+    <div id="chunkInfo">x1,y1 - x2,y2</div>
+
+    <div id="colorInfo">
+      <strong>Coordinates:</strong> <span id="coords">N/A</span><br><br>
+      <strong>Wplace Coords:</strong> <span id="wplaceCoords">N/A</span><br><br>
+      <strong>Color:</strong> <span id="colorValue">N/A</span> <br>
+      <span id="colorName"></span>
+      <div id="colorBox"></div>
+    </div>
+  </div>
 </div>
 
 <div class="controls">
   <button id="zoomIn">Zoom In</button>
   <button id="zoomOut">Zoom Out</button>
-</div>
-
-<div id="colorInfo">
-  <strong>Coordinates:</strong> <span id="coords">N/A</span><br>
-  <strong>Wplace Coordinates:</strong> <span id="wplaceCoords">N/A</span><br>
-  <strong>Color:</strong> <span id="colorValue">N/A</span>
-  <span id="colorName"></span>
-  <div id="colorBox"></div>
 </div>
 
 <script src="script.js"></script>
