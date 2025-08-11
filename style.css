@@ -56,3 +56,17 @@ canvas {
   vertical-align: middle;
   margin-left: 10px;
 }
+
+.advanced-toggle {
+  margin-top: 10px;
+}
+
+#advancedOptions {
+  margin-top: 10px;
+  background: #fff;
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: inline-block;
+  text-align: left;
+  border-radius: 5px;
+}

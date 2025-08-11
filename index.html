@@ -35,6 +35,38 @@
   <button id="zoomOut">Zoom Out</button>
 </div>
 
+<div class="advanced-toggle">
+  <button id="toggleAdvanced">Show Advanced Options ▼</button>
+</div>
+
+<div id="advancedOptions" style="display:none;">
+  <hr>
+  <label>Upload Image:
+    <input type="file" id="imageLoader" accept="image/*">
+  </label>
+  <br><br>
+
+  <label>Chunk Size:
+    <input type="number" id="chunkSizeInput" value="20" min="1">
+  </label>
+  <br><br>
+
+  <label>rootWplaceX:
+    <input type="number" id="rootWplaceXInput" value="3001">
+  </label>
+  <br><br>
+
+  <label>rootWplaceY:
+    <input type="number" id="rootWplaceYInput" value="500">
+  </label>
+  <br><br>
+
+  <label>Wplace Place Name:
+    <input type="text" id="wplaceNameInput" value="Thanh Hoá #5">
+  </label>
+</div>
+
+
 <script src="script.js"></script>
 </body>
 </html>

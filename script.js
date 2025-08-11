@@ -54,8 +54,11 @@ let originalImage = null;
 let selectedX = null;
 let selectedY = null;
 
-// Chunk viewer setup
-const chunkSize = 20;
+let chunkSize = 20;
+let rootWplaceX = 3001;
+let rootWplaceY = 500;
+let wplaceName = "Thanh Hoá #5";
+
 const chunkCanvas = document.getElementById('chunkCanvas');
 const chunkCtx = chunkCanvas.getContext('2d');
 
@@ -97,9 +100,6 @@ function redraw() {
   }
 }
 
-const rootWplaceX = 3001; // Adjust as needed
-const rootWplaceY = 500; // Adjust as needed
-
 // Get pixel color at coordinates
 function updatePixelInfo(x, y) {
   if (!originalImage) return;
@@ -112,7 +112,7 @@ function updatePixelInfo(x, y) {
   const hex = rgbToHex(r, g, b);
   
   document.getElementById('coords').textContent = `${x}, ${y}`;
-  document.getElementById('wplaceCoords').textContent = `${x + rootWplaceX}, ${y + rootWplaceY} Thanh Hoá #5`;
+  document.getElementById('wplaceCoords').textContent = `${x + rootWplaceX}, ${y + rootWplaceY} ${wplaceName}`;
   document.getElementById('colorValue').textContent = `${hex} (RGB: ${r},${g},${b})`;
   document.getElementById('colorBox').style.backgroundColor = hex;
   document.getElementById('colorName').textContent =
@@ -241,4 +241,68 @@ chunkCanvas.addEventListener('click', function(e) {
   redraw();
   updatePixelInfo(newX, newY);
   showChunkForPixel(newX, newY);
+});
+
+// Toggle advanced options
+document.getElementById('toggleAdvanced').addEventListener('click', () => {
+  const adv = document.getElementById('advancedOptions');
+  const btn = document.getElementById('toggleAdvanced');
+  if (adv.style.display === 'none') {
+    adv.style.display = 'block';
+    btn.textContent = 'Hide Advanced Options ▲';
+  } else {
+    adv.style.display = 'none';
+    btn.textContent = 'Show Advanced Options ▼';
+  }
+});
+
+// Listen to changes
+document.getElementById('chunkSizeInput').addEventListener('input', e => {
+  const val = parseInt(e.target.value, 10);
+  if (val > 0) {
+    chunkSize = val;
+    if (selectedX !== null && selectedY !== null) {
+      showChunkForPixel(selectedX, selectedY);
+    }
+  }
+});
+
+document.getElementById('rootWplaceXInput').addEventListener('input', e => {
+  rootWplaceX = parseInt(e.target.value, 10) || 0;
+  if (selectedX !== null && selectedY !== null) {
+    updatePixelInfo(selectedX, selectedY);
+  }
+});
+
+document.getElementById('rootWplaceYInput').addEventListener('input', e => {
+  rootWplaceY = parseInt(e.target.value, 10) || 0;
+  if (selectedX !== null && selectedY !== null) {
+    updatePixelInfo(selectedX, selectedY);
+  }
+});
+
+document.getElementById('wplaceNameInput').addEventListener('input', e => {
+  wplaceName = e.target.value;
+  if (selectedX !== null && selectedY !== null) {
+    updatePixelInfo(selectedX, selectedY);
+  }
+});
+
+// Handle custom image upload
+document.getElementById('imageLoader').addEventListener('change', e => {
+  const reader = new FileReader();
+  reader.onload = function(event) {
+    img.onload = function() {
+      scale = 5;
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+      originalImage = ctx.getImageData(0, 0, img.width, img.height);
+      redraw();
+    };
+    img.src = event.target.result;
+  };
+  if (e.target.files[0]) {
+    reader.readAsDataURL(e.target.files[0]);
+  }
 });
