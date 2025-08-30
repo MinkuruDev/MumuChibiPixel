@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mumu Wplace Helper</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Mumu Wplace Helper</h1>
+
+<!-- <input type="file" id="imageLoader" accept="image/*"><br> -->
+
+<div id="mainContainer">
+  <div id="canvasContainer">
+    <canvas id="imageCanvas" tabindex="0"></canvas>
+  </div>
+
+  <div id="chunkViewerContainer">
+    <h3>Chunk Viewer</h3>
+    <canvas id="chunkCanvas"></canvas>
+    <div id="chunkInfo">x1,y1 - x2,y2</div>
+
+    <div id="colorInfo">
+      <strong>Coordinates:</strong> <span id="coords">N/A</span><br><br>
+      <strong>Wplace Coords:</strong> <span id="wplaceCoords">N/A</span><br><br>
+      <strong>Color:</strong> <span id="colorValue">N/A</span> <br>
+      <span id="colorName"></span>
+      <div id="colorBox"></div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="zoomIn">Zoom In</button>
+  <button id="zoomOut">Zoom Out</button>
+</div>
+
+<div class="advanced-toggle">
+  <button id="toggleAdvanced">Show Advanced Options ▼</button>
+</div>
+
+<div id="advancedOptions" style="display:none;">
+  <hr>
+  <label>Upload Image:
+    <input type="file" id="imageLoader" accept="image/*">
+  </label>
+  <br><br>
+
+  <label>Chunk Size:
+    <input type="number" id="chunkSizeInput" value="20" min="1">
+  </label>
+  <br><br>
+
+  <label>rootWplaceX:
+    <input type="number" id="rootWplaceXInput" value="3001">
+  </label>
+  <br><br>
+
+  <label>rootWplaceY:
+    <input type="number" id="rootWplaceYInput" value="500">
+  </label>
+  <br><br>
+
+  <label>Wplace Place Name:
+    <input type="text" id="wplaceNameInput" value="Thanh Hoá #5">
+  </label>
+</div>
+
+
+<script src="script_v2.js"></script>
+</body>
+</html>
